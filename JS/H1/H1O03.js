@@ -11,8 +11,10 @@ function draw() {
   // fill(0,0,255,0.3);
   fill('red');
   rect(0,150,450,150);
+  
   fill('green');
   rect(0,0,150,450);
+
   fill('blue');
   rect(75,0,375,450);
 
