@@ -1,9 +1,9 @@
-var variabeleA = 21;
-var variabeleB = 14;
+var variabeleA = 13;
+var variabeleB = 4;
 var uitkomst;
 
 function setup() {
-  canvas = createCanvas(1000,500);
+  canvas = createCanvas(1000,800);
   background('orange');
   canvas.parent('processing');
   textFont("Georgia");
@@ -13,10 +13,10 @@ function setup() {
 }
 
 function draw() {
-  uitkomst = variabeleA+variabeleB;
+  uitkomst = variabeleA*variabeleB;
   // Schrijf de rekensom op het scherm
   
-  text("De som " + variabeleA+ " + " + variabeleB + " heeft als uitkomst: " + uitkomst,50,50);
+  text("De som " + variabeleA + " x " + variabeleB + " heeft als uitkomst: " + uitkomst,50,50);
 
   translate(50,100);
   fill('dodgerblue');
@@ -26,7 +26,9 @@ function draw() {
   
   rect(0,0,10*variabeleA,10*variabeleA);
   translate(10*variabeleA+50,0);
+
   rect(0,0,10*variabeleB,10*variabeleB);
   translate(10*variabeleB + 150,0);
+
   rect(0,0,10*uitkomst,10*uitkomst);  
 }
