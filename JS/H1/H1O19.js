@@ -36,7 +36,7 @@ function tekenVierkant(p) {
   stroke('red');
 
   line(p, 0, width, p); // +
-  line(width - p, height - p, p, 0); // - AAAAAAAAA IK KRIJG DEZE NIET GOED 
+  line(0, height - p, p, 0); // -
   line(width - p, height, 0, height - p); // +
   line(width - p, height, width, p); // -
 
