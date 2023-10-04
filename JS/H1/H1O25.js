@@ -5,13 +5,12 @@ var xSnelheid = 8;
 var ySnelheid = 5;
 var onderlingeAfstand;
 
-
 function setup() {
-  canvas = createCanvas(1000,300);
+  canvas = createCanvas(1000, 300);
   canvas.parent('processing');
   frameRate(50);
-  colorMode(RGB,255,255,255,1);
-  background(0,0,75,1);
+  colorMode(RGB, 255, 255, 255, 1);
+  background(0, 0, 75, 1);
   noStroke();
   textFont("Verdana");
   textSize(140);
@@ -20,46 +19,50 @@ function setup() {
 }
 
 function draw() {
-  background(0,0,75,0.05);
-  fill(0,0,255,1);
-  ellipse(550,height - straal,2*straal);
+  background(0, 0, 75, 0.05);
+  fill(0, 0, 255, 1);
+  ellipse(550, height - straal, 2 * straal);
+
   xPositie += xSnelheid;
   yPositie += ySnelheid;
-  fill(255,255,255,1);
-  ellipse(xPositie,yPositie,2*straal);  
-  
-  // Pas onderstaande regel aan: gebruik de functie dist om de onderlinge afstand te bepalen
-  
-  onderlingeAfstand = 1;
-  if (onderlingeAfstand <= 0) {
+  fill(200, 255, 255, 1);
+  ellipse(xPositie, yPositie, 2 * straal);
+
+  xPositie = constrain(xPositie, straal, width - straal);
+  yPositie = constrain(yPositie, straal, height - straal); // Voeg een constrain toe voor de y-richting
+
+  onderlingeAfstand = dist(xPositie, yPositie, 550, height - straal);
+
+  if (onderlingeAfstand <= (straal+5)) {
     eindScherm();
     noLoop();
   }
-  
-  // door de slashes weg te halen kun je besturing van de bal inschakelen.
-  // Om het wat moeilijker te maken veranderen er bij gebruik van een pijltoets 2 dingen tegelijkertijd.
-  
-  // gebruikBesturing();
 
-  if (yPositie<straal || yPositie>height-straal) {
+  gebruikBesturing();
+
+  if (yPositie <= straal || yPositie >= height - straal) {
     ySnelheid *= -1;
-  } 
+  }
+
+  if (xPositie <= straal || xPositie >= width - straal) {
+    xSnelheid *= -1; // Keer de richting om bij raken van de zijkanten
+  }
 }
 
 function gebruikBesturing() {
   if (keyIsDown(LEFT_ARROW)) {
+    xSnelheid -= 1;
+    ySnelheid -= 1;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
     xSnelheid += 1;
     ySnelheid += 1;
   }
-  if (keyIsDown(RIGHT_ARROW)) {
-    xSnelheid -= 1;
-    ySnelheid -= 1;
-  }    
 }
 
 function eindScherm() {
   background('white');
   fill('black');
-  text("GEVANGEN!",75,200);
+  text("GEVANGEN!", 75, 200);
   noLoop();
 }

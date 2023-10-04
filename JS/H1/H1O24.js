@@ -30,15 +30,42 @@ function draw() {
   xJager = constrain(xJager,0,width - 100);
   yJager = constrain(yJager,0,height - 100);
 
-  if (xJager >= 700 && xJager <= 875 && yJager >= 75 && yJager <= 225) {
-    fill('chartreuse');
+  if (keyIsDown(65)) {
+    xProoi -= 5; // 'a' toets
   }
-  else {
+  if (keyIsDown(68)) {
+    xProoi += 5; // 'd' toets
+  }
+  if (keyIsDown(87)) {
+    yProoi -= 5; // 'w' toets
+  }
+  if (keyIsDown(83)) {
+    yProoi += 5; // 's' toets
+  }
+
+  
+
+  xProoi = constrain(xProoi, 0, width - 100);
+  yProoi = constrain(yProoi, 0, height - 100);
+
+  
+  // if (xJager >= 700 && xJager <= 875 && yJager >= 75 && yJager <= 225) {
+  //   fill('chartreuse');
+  // }
+  // else {
+  //   fill('darkkhaki');
+  // }
+
+  rect(xProoi,yProoi,75,50);
+  fill('moccasin');
+  rect(xJager,yJager,100,100);
+  
+  if (rectIntersect(xProoi, yProoi, 75, 50, xJager, yJager, 100, 100, )) {
+    fill('chartreuse');
+    eindScherm();
+  } else {
     fill('darkkhaki');
   }
-  rect(800,175,75,50);
-  fill('moccasin');
-  rect(xJager,yJager,100,100);   
 }
 
 function eindScherm() {
@@ -46,4 +73,13 @@ function eindScherm() {
   fill('black');
   text("GEVANGEN!",75,250);
   noLoop();
+}
+
+function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
+  return (
+    x1 < x2 + w2 &&
+    x1 + w1 > x2 &&
+    y1 < y2 + h2 &&
+    y1 + h1 > y2
+  );
 }

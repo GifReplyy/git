@@ -29,15 +29,31 @@ function draw() {
   y = constrain(y,0,height - 100);
   x = constrain(x,0,width - 100);
 
-  if (y >= 75 && y <= 225) {
+  if (rectIntersect(x, y, 100, 100, 800, 175, 75, 50)) {
     fill('chartreuse');
-  }
-  else {
+  } else {
     fill('darkkhaki');
   }
+
+  // if (y >= 75 && y <= 225) {
+  //   fill('chartreuse');
+  // }
+  // else {
+  //   fill('darkkhaki');
+  // }
   
   rect(800,175,75,50);
   
   fill('moccasin');
   rect(x,y,100,100);   
+}
+
+
+function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
+  return (
+    x1 < x2 + w2 &&
+    x1 + w1 > x2 &&
+    y1 < y2 + h2 &&
+    y1 + h1 > y2
+  );
 }
