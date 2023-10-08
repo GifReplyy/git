@@ -62,3 +62,4 @@ function tekenBloem() {
     rotate(360 / aantal);
   }
 }
+
