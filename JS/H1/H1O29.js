@@ -16,14 +16,12 @@ function setup() {
 function draw() {
   background('lavender');
   fill('black');
-  text("Aantal (gebruik L&R arrows)= " + aantal + "\nScale = " + round(schaal, 3) + "\nBloemen (gebruik A en D) = " + Nbloemen, 10, 20);
+  text("Aantal (gebruik L&R arrows) = " + aantal + "\nScale = " + round(schaal, 3) + "\nBloemen (gebruik A en D) = " + Nbloemen, 10, 20);
   breedte = width / Nbloemen;
 
   push();
   translate(0.5*breedte,225);
   
-
-
   for (var n = 0; n < Nbloemen;n++) {
     push();
       scale(schaal);
