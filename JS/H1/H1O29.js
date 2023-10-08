@@ -1,6 +1,6 @@
-var aantal = 5;
-var schaal = 1; // Declareer de schaal buiten de draw-functie.
-var Nbloemen = 2;
+var aantal = 29;
+var schaal = 0.4;
+var Nbloemen = 6;
 var breedte;
 
 function setup() {
@@ -16,17 +16,22 @@ function setup() {
 function draw() {
   background('lavender');
   fill('black');
-  text("aantal = " + aantal, 10, 20);
+  text("Aantal (gebruik L&R arrows)= " + aantal + "\nScale = " + round(schaal, 3) + "\nBloemen (gebruik A en D) = " + Nbloemen, 10, 20);
   breedte = width / Nbloemen;
 
   push();
-  scale(schaal);
   translate(0.5*breedte,225);
+  
+
 
   for (var n = 0; n < Nbloemen;n++) {
-    tekenBloem();
-    translate(width/Nbloemen, 0);
+    push();
+      scale(schaal);
+      tekenBloem();
+    pop();
+    translate(breedte, 0);
   }
+
   pop();
 
   if (keyIsDown(LEFT_ARROW) && aantal >= 2) {
@@ -50,6 +55,7 @@ function draw() {
 }
 
 function tekenBloem() {
+
   fill(178, 34, 34, 0.7);
   for (var n = 0; n < aantal; n++) {
     ellipse(0, 0, 400, 50);
