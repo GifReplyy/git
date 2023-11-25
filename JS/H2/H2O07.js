@@ -30,3 +30,5 @@ function draw() {
     text(namen[n],650,48*(n + 1));
   }
 }
+
+// gemaakt door TDG TPS 251123

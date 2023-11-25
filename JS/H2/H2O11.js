@@ -42,3 +42,5 @@ function draw() {
   text("frameCount=" + frameCount,5,40);
   text("nummer=" + nummer,5,70);
  }
+
+ // gemaakt door TDG TPS 251123

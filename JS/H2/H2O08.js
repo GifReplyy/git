@@ -46,3 +46,5 @@ function tekenAchtergrond() {
   rect(0, 220, width, height - 220);
   translate(50, 0);
 }
+
+// gemaakt door TDG TPS 251123

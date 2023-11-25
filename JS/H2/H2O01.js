@@ -23,3 +23,4 @@ function draw() {
   keverY += random(-5, 5);
   image(kever, keverX, keverY, 30, 30);  // Verander de grootte van de kever naar 30x30 pixels
 }
+// gemaakt door TDG TPS 251123

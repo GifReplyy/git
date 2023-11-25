@@ -34,3 +34,5 @@ function draw() {
 
   text("strandX=" + strandX, 20, 20);
 }
+
+// gemaakt door TDG TPS 251123

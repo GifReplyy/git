@@ -34,3 +34,5 @@ function draw() {
   text("afmeting: " + piano.width + " x " + piano.height,575,20);
   image(piano,575,25,250,250);
 }
+
+// gemaakt door TDG TPS 251123
