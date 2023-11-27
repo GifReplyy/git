@@ -1,6 +1,6 @@
 var raster = {
-  aantalRijen: 6,
-  aantalKolommen: 9,
+  aantalRijen: 18,
+  aantalKolommen: 27,
   celGrootte: null,
   
   berekenCelGrootte() {
@@ -29,7 +29,7 @@ var jos = {
 
   beweeg() {
     if (keyIsDown(LEFT_ARROW)) {
-      this.x -= raster.celGrootte;
+      this.x -= this.stapGrootte;
       this.frameNummer = 2;
     }
     if (keyIsDown(RIGHT_ARROW)) {
@@ -58,7 +58,7 @@ function preload() {
   brug = loadImage("images/backgrounds/dame_op_brug_1800.jpg");
   for (var b = 0;b < jos.aantalFrames;b++) {
     frame = loadImage("images/sprites/Jos100px/Jos_" + b + ".png");
-    jos.animatie.push(frame);
+    jos.animatie.push(frame);  // deze lijn geeft aan dat elk nieuwe frame wordt toegevoegd in het object Jos en dan wordt toegevoegd aan de animatie: [] 
   }
 }
 
@@ -75,4 +75,5 @@ function draw() {
   raster.teken();
   jos.beweeg();
   jos.toon();
+  text(jos.animatie[3].width,5,15); // dit geeft de breedte pixel van de 4e geladen foto 
 }

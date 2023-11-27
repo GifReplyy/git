@@ -8,9 +8,9 @@ var vuur = {
   B: 0,
   
   teken() {
-    this.diameter = random(240,270);
+    this.diameter = random(240,270); // grootte verandert steeds
     this.straal = this.diameter / 2;
-    this.G = random(70,150);
+    this.G = random(70,150); // kleur verandert 
     fill(this.R,this.G,this.B);
     ellipse(this.x,this.y,this.diameter);
   }
@@ -25,7 +25,8 @@ var jos = {
   kleur: 'salmon',
   
   isVlakbij(gevaar) {
-    if (dist(this.x,this.y,gevaar.x,gevaar.y) < this.straal+gevaar.straal + 25) {
+    if (dist(this.x,this.y,gevaar.x,gevaar.y) < this.straal+gevaar.straal + 25) { 
+      // De methode isVlakbij geeft de waarde true terug als de afstand tussen het middelpunt van Jos (this.x, this.y) en het gevaar (het object vuur) kleiner is dan de som van de straal van Jos (this.straal) en de straal van het gevaar (gevaar.straal), plus 25 pixels. Met andere woorden, de methode geeft true terug als Jos binnen een bepaalde afstand van het gevaar is.
       return true;
     }
     else {
@@ -72,5 +73,11 @@ function draw() {
   
   // voeg hier de if-else in
   
+  if (jos.isVlakbij(vuur)) {
+    jos.kleur = 'red';
+   }
+   else {
+    jos.kleur = 'salmon';
+   }
   jos.teken(mouseX,mouseY);
 }

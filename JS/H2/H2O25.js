@@ -23,7 +23,11 @@ var jager = {
   },
   
   vlakbijRand() {
-    if (this.x < 4*this.stapGrootte || this.x > canvas.width - 4*this.stapGrootte - this.zijde) {
+    if (this.x < 4*this.stapGrootte ||
+        this.x > canvas.width - 4*this.stapGrootte - this.zijde ||
+        this.y < 4*this.stapGrootte || 
+        this.y > canvas.height - 4*this.stapGrootte - this.zijde
+        ) {
       return true;
     }
     else {
@@ -43,7 +47,7 @@ var prooi = {
   y: 175,
   breedte: 75,
   hoogte: 50,
-  benGeraakt: false,
+  benGeraakt: null,
   
   wordJeGeraakt(vijand) {
     if (vijand.x >= this.x - vijand.zijde && vijand.x <= this.x + this.breedte) {
@@ -73,6 +77,7 @@ function setup() {
 function draw() {
   if (jager.vlakbijRand()) {
     background('red');
+    prooi.benGeraakt = false;
   }
   else {
     background('orange');

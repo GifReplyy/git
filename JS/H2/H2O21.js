@@ -3,7 +3,7 @@ var cirkel = {
   straal: null,
   x: null,
   y: null,
-  alpha: 0.8,
+  alpha: 1.0,
   aantalRaak: 0,
 
   teken() {
@@ -15,12 +15,21 @@ var cirkel = {
   },
 
   kiesEenPlek() {
-    cirkel.x = random(this.diameter,canvas.width - this.diameter);
-    cirkel.y = random(this.diameter,canvas.height - this.diameter);
+    cirkel.x = random(this.diameter,canvas.width - this.diameter);  // deze twee lijnen zorgen ervoor dat het rondje steeds ergens anders komt te staan, "random"
+    cirkel.y = random(this.diameter + 40,canvas.height - this.diameter);
   },
 
   controleerRaak() {
     afstandMuisCirkel = dist(mouseX,mouseY,this.x,this.y);
+
+    if (mouseIsPressed == true) {
+      if (afstandMuisCirkel <= this.diameter) {
+        this.alpha -= 0.025;
+        this.diameter --;
+        this.aantalRaak ++;
+        this.kiesEenPlek();
+      }
+    }
 
   }
 }
@@ -49,4 +58,10 @@ function draw() {
 
   cirkel.controleerRaak();
   cirkel.teken();
+
+  push();
+  fill(225,225,225);
+  rect(0, 0, width, 40);
+  pop();
+  text(cirkel.aantalRaak + " keer raak geklikt!", 20, 30);
 }
