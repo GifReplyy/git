@@ -1,5 +1,6 @@
 var spriteSheet;
-var rij = 0;
+var rij = 2;
+var kolom = 0;
 var aantalSpriteRijen = 4;
 var aantalSpriteKolommen = 12;
 
@@ -29,10 +30,33 @@ function setup() {
   sBr = breedte / aantalSpriteKolommen;
   sHo = hoogte / aantalSpriteRijen;
   br = sBr*schaal;
-  ho = sBr*schaal;
+  ho = sBr*schaal;  
 }
 
 function draw() {
   background('lavender');
-  image(spriteSheet,x,y,br,ho,(frameCount % aantalSpriteKolommen)*sBr,rij*sHo,sBr,sHo);
+  image(spriteSheet,x,y,br,ho,(kolom % aantalSpriteKolommen)*sBr,rij*sHo,sBr,sHo);
+
+  if (keyIsDown(LEFT_ARROW)) {
+    rij = 1;
+    x -= 10;
+    kolom++;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    rij = 2;
+    x += 10;
+    kolom++;
+  }
+  if (keyIsDown(UP_ARROW)) {
+    rij = 3;
+    y -= 10;
+    kolom++;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+    rij = 0;
+    y += 10;
+    kolom++;
+  }
+  x = constrain(x,0,width - br);
+  y = constrain(y,0,height - ho);
 }

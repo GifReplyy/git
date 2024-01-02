@@ -7,6 +7,12 @@ class Vis {
   }
   
   zwem() {
+    if (keyIsDown(UP_ARROW)) {
+      this.y -= this.snelheid;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+      this.y += this.snelheid;
+    }
     this.x += this.snelheid;
   }
   
